@@ -1,0 +1,20 @@
+{
+  "name": "ebw-6",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Tim Denney <timothy.denney@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/Gurock50/ebw-6",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}
