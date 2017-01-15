@@ -4,38 +4,28 @@ var app = express();
 
 var port = process.env.PORT || 5000;
 var nav = [{
-    Link: '/Books',
-    Text: 'Book'
+    Link: '/Rides',
+    Text: 'Rides'
 }, {
     Link: '/Authors',
-    Text: 'Author'
+    Text: 'Stuff'
 }];
-var bookRouter = require('./src/routes/bookRoutes')(nav);
+var rideRouter = require('./src/routes/rideRoutes')(nav);
 var adminRouter = require('./src/routes/adminRoutes')(nav);
 
 app.use(express.static('public'));
-app.set('views', './src/views');
+app.set('views', './src/views/pages');
 
 app.set('view engine', 'ejs');
 
-app.use('/Books', bookRouter);
-app.use('/Admin', adminRouter)
+app.use('/Rides', rideRouter);
+app.use('/Admin', adminRouter);
 
 app.get('/', function (req, res) {
     res.render('index', {
-        title: 'Hello from render',
-        nav: [{
-            Link: '/Books',
-            Text: 'Books'
-        }, {
-            Link: '/Authors',
-            Text: 'Authors'
-        }]
+        title: 'Explore-By-Wheel',
+        nav: nav
     });
-});
-
-app.get('/books', function (req, res) {
-    res.send('Hello Books');
 });
 
 app.listen(port, function (err) {

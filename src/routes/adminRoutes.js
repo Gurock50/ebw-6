@@ -2,67 +2,60 @@ var express = require('express');
 var adminRouter = express.Router();
 var mongodb = require('mongodb').MongoClient;
 
-var books = [
+var rides = [
         {
-            title: 'War and Peace',
+            title: 'Ride 1',
             genre: 'Historical Fiction',
             author: 'Lev Nikolayevich Tolstoy',
             read: false
         },
         {
-            title: 'Les Misérables',
+            title: 'Ride 2',
             genre: 'Historical Fiction',
             author: 'Victor Hugo',
             read: false
         },
         {
-            title: 'The Time Machine',
+            title: 'Ride 3',
             genre: 'Science Fiction',
             author: 'H. G. Wells',
             read: false
         },
         {
-            title: 'A Journey into the Center of the Earth',
+            title: 'Ride 4',
             genre: 'Science Fiction',
             author: 'Jules Verne',
             read: false
         },
         {
-            title: 'The Dark World',
+            title: 'Ride 5',
             genre: 'Fantasy',
             author: 'Henry Kuttner',
             read: false
         },
         {
-            title: 'The Wind in the Willows',
+            title: 'Ride 6',
             genre: 'Fantasy',
             author: 'Kenneth Grahame',
             read: false
         },
         {
-            title: 'Life On The Mississippi',
+            title: 'Ride 7',
             genre: 'History',
             author: 'Mark Twain',
-            read: false
-        },
-        {
-            title: 'Childhood',
-            genre: 'Biography',
-            author: 'Lev Nikolayevich Tolstoy',
             read: false
         }
     ];
 
 var router = function (nav) {
 
-    adminRouter.route('/addBooks')
+    adminRouter.route('/addRides')
         .get(function (req, res) {
-            var url =
-                'mongodb://localhost:27017/libraryApp';
+            var url = 'mongodb://localhost:27017/libraryApp';
 
             mongodb.connect(url, function (err, db) {
-                var collection = db.collection('books');
-                collection.insertMany(books,
+                var collection = db.collection('rides');
+                collection.insertMany(rides,
                     function (err, results) {
                         res.send(results);
                         db.close();
@@ -71,7 +64,6 @@ var router = function (nav) {
 
             });
 
-            //res.send('inserting books');
         });
 
     return adminRouter;
